@@ -1,0 +1,12 @@
+FETCH0:
+
+	DrPC LdA LdMAR
+
+	goto FETCH1
+
+FETCH1:
+
+	DrMEM LdIR
+
+	goto FETCH2
+
