@@ -1032,7 +1032,7 @@
 6201 1082 e00900 104044 88045 20100 104047 88048
 220100 440a 8804b 20100 440d 8804e 210f 20080
 4411 88052 2113 40040 4055 88056 410117 1000000
-4219 8400 900 a021c 840 1d
+4219 841a 900 a021c 840 1d
 </a>
       <a name="dataWidth" val="25"/>
       <a name="label" val="Main_ROM"/>
@@ -1040,12 +1040,12 @@
     </comp>
     <comp lib="4" loc="(1670,430)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R0"/>
+      <a name="label" val="zero"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(1670,560)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R4"/>
+      <a name="label" val="a1"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(1670,670)" name="Register">
@@ -1080,12 +1080,12 @@
     </comp>
     <comp lib="4" loc="(2030,430)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R1"/>
+      <a name="label" val="at"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(2030,560)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R5"/>
+      <a name="label" val="a2"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(2030,670)" name="Register">
@@ -1095,17 +1095,17 @@
     </comp>
     <comp lib="4" loc="(2030,800)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R13"/>
+      <a name="label" val="sp"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(2380,430)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R2"/>
+      <a name="label" val="v0"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(2380,560)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R6"/>
+      <a name="label" val="t0"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(2380,670)" name="Register">
@@ -1115,12 +1115,12 @@
     </comp>
     <comp lib="4" loc="(2380,800)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R14"/>
+      <a name="label" val="pr"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(2720,430)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R3"/>
+      <a name="label" val="a0"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(2730,560)" name="Register">
@@ -1135,7 +1135,7 @@
     </comp>
     <comp lib="4" loc="(2730,800)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="R15"/>
+      <a name="label" val="ra"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="4" loc="(3190,410)" name="Register">
