@@ -92,10 +92,9 @@ AGAIN:  add $v0, $v0, $a0                       ! return value += argument0
         jalr $zero, $ra                         ! return from mult
 
 timer_handler:
-        addi $sp, $sp, -1                       ! push 1 slot onto the stack
-        sw $k0, 0($sp)                          ! save $k0 on the stack
+        addi $sp, $sp, -14                      ! push 14 slots onto the stack
+        sw $k0, 13($sp)                         ! save $k0 on the stack
         ei                                      ! enable interrupts
-        addi $sp, $sp, -13                      ! push 13 slots onto the stack
         sw $at, 12($sp)                         ! save at on stack
         sw $v0, 11($sp)                         ! save v0 on stack
         sw $a0, 10($sp)                         ! save a0 on stack
@@ -129,10 +128,9 @@ timer_handler:
         lw $a0, 10($sp)                         ! restore a0
         lw $v0, 11($sp)                         ! restore v0
         lw $at, 12($sp)                         ! restore at
-        addi $sp, $sp, 13                       ! pop 13 slots off the stack
         di                                      ! disable interrupts
-        lw $k0, 0($sp)                          ! restore $k0
-        addi $sp, $sp, 1                        ! pop $k0 off the stack
+        lw $k0, 13($sp)                         ! restore $k0
+        addi $sp, $sp, 14                       ! pop 14 slots off the stack
         reti
 
 toaster_handler:
@@ -140,8 +138,81 @@ toaster_handler:
         ! then calculate the difference between minimum and maximum value
         ! (hint: think about what ALU operations you could use to implement subract using 2s compliment)
 
-        add $zero, $zero, $zero                 ! TODO FIX ME
+        addi $sp, $sp, -14                      ! push 14 slots onto the stack
+        sw $k0, 13($sp)                         ! save $k0 on the stack
+        ei                                      ! enable interrupts
+        sw $at, 12($sp)                         ! save at on stack
+        sw $v0, 11($sp)                         ! save v0 on stack
+        sw $a0, 10($sp)                         ! save a0 on stack
+        sw $a1, 9($sp)                          ! save a1 on stack
+        sw $a2, 8($sp)                          ! save a2 on stack
+        sw $t0, 7($sp)                          ! save t0 on stack
+        sw $t1, 6($sp)                          ! save t1 on stack
+        sw $t2, 5($sp)                          ! save t2 on stack
+        sw $s0, 4($sp)                          ! save s0 on stack
+        sw $s1, 3($sp)                          ! save s1 on stack
+        sw $s2, 2($sp)                          ! save s2 on stack
+        sw $fp, 1($sp)                          ! save fp on stack
+        sw $ra, 0($sp)                          ! save ra on stack
 
+        // program
+
+        lea $t0, maxval                         ! t0 = mem: 0x'maxval'
+        lw $t0, 0($t0)                          ! t0 = mem[0x'maxval'] = 0xFFFD
+        lw $t0, 0($t0)                          ! t0 = mem[0xFFFD] = maxval
+        lea $t1, minval                         ! t1 = mem: 0x'minval'
+        lw $t1, 0($t1)                          ! t1 = mem[0x'minval'] = 0xFFFC
+        lw $t1, 0($t1)                          ! t1 = mem[0xFFFC] = minval
+
+        in $t2, 0x01                            ! t2 = data from DEVICEID: 0x01
+        bgt $t2, $t0, GREATER_THAN
+        blt $t2, $t1, LESS_THAN
+        br DIFFERENCE
+
+GREATER_THAN:
+        lea $t0, maxval                         ! t0 = mem: 0x'maxval'
+        lw $t0, 0($t0)                          ! t0 = mem[0x'maxval'] = 0xFFFD
+        sw $t2, 0($t0)                          ! mem[0xFFFD] = t2 = newmaxval
+        br DIFFERENCE
+
+LESS_THAN:
+        lea $t1, minval                         ! t1 = mem: 0x'minval'
+        lw $t1, 0($t1)                          ! t1 = mem[0x'minval'] = 0xFFFC
+        sw $t2, 0($t1)                          ! mem[0xFFFC] = t2 = newminval
+
+DIFFERENCE:
+        lea $t0, maxval                         ! t0 = mem: 0x'maxval'
+        lw $t0, 0($t0)                          ! t0 = mem[0x'maxval'] = 0xFFFD
+        lw $t0, 0($t0)                          ! t0 = mem[0xFFFD] = maxval
+        lea $t1, minval                         ! t1 = mem: 0x'minval'
+        lw $t1, 0($t1)                          ! t1 = mem[0x'minval'] = 0xFFFC
+        lw $t1, 0($t1)                          ! t1 = mem[0xFFFC] = minval
+
+        nand $t1, $t1, $t1                      ! t1 = NAND(A, A) = NOT A
+        addi $t1, $t1, 1                        ! t1 = -minval
+        add $t2, $t0, $t1                       ! t2 = maxval - minval
+
+        lea $t0, range                          ! t0 = mem: 0x'range'
+        lw $t0, 0($t0)                          ! t0 = mem[0x'range'] = 0xFFFE
+        sw $t2, 0($t0)                          ! mem[0xFFFE] = maxval - minval
+
+        lw $ra, 0($sp)                          ! restore ra
+        lw $fp, 1($sp)                          ! restore fp
+        lw $s2, 2($sp)                          ! restore s2
+        lw $s1, 3($sp)                          ! restore s1
+        lw $s0, 4($sp)                          ! restore s0
+        lw $t2, 5($sp)                          ! restore t2
+        lw $t1, 6($sp)                          ! restore t1
+        lw $t0, 7($sp)                          ! restore t0
+        lw $a2, 8($sp)                          ! restore a2
+        lw $a1, 9($sp)                          ! restore a1
+        lw $a0, 10($sp)                         ! restore a0
+        lw $v0, 11($sp)                         ! restore v0
+        lw $at, 12($sp)                         ! restore at
+        di                                      ! disable interrupts
+        lw $k0, 13($sp)                         ! restore $k0
+        addi $sp, $sp, 14                       ! pop 14 slots off the stack
+        reti
 
 initsp: .fill 0xA000
 ticks:  .fill 0xFFFF

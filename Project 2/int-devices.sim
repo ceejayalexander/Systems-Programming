@@ -1,5 +1,5 @@
 {
-  "version": "1.8.2",
+  "version": "1.9.1",
   "globalBitSize": 32,
   "clockSpeed": 8,
   "circuits": [
@@ -13,6 +13,7 @@
           "properties": {
             "Label": "ID",
             "Direction": "NORTH",
+            "Width": "2",
             "Bitsize": "32"
           }
         },
@@ -23,6 +24,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "NORTH",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -33,6 +35,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "NORTH",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -43,6 +46,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "NORTH",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -53,6 +57,7 @@
           "properties": {
             "Label": "RESET",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -63,6 +68,7 @@
           "properties": {
             "Label": "RESET",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -73,6 +79,7 @@
           "properties": {
             "Label": "ONE",
             "Direction": "EAST",
+            "Width": "3",
             "Bitsize": "32"
           }
         },
@@ -83,6 +90,7 @@
           "properties": {
             "Label": "ID",
             "Direction": "WEST",
+            "Width": "2",
             "Bitsize": "32"
           }
         },
@@ -93,6 +101,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "WEST",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -103,6 +112,7 @@
           "properties": {
             "Label": "ONE",
             "Direction": "WEST",
+            "Width": "3",
             "Bitsize": "32"
           }
         },
@@ -113,6 +123,7 @@
           "properties": {
             "Label": "ZERO",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "32"
           }
         },
@@ -123,6 +134,7 @@
           "properties": {
             "Label": "TIME",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "32"
           }
         },
@@ -133,6 +145,7 @@
           "properties": {
             "Label": "ZERO",
             "Direction": "WEST",
+            "Width": "4",
             "Bitsize": "32"
           }
         },
@@ -143,6 +156,7 @@
           "properties": {
             "Label": "INTA",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -153,6 +167,7 @@
           "properties": {
             "Label": "INTA",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -163,6 +178,7 @@
           "properties": {
             "Label": "INTA",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -173,6 +189,7 @@
           "properties": {
             "Label": "TIME",
             "Direction": "WEST",
+            "Width": "4",
             "Bitsize": "32"
           }
         },
@@ -183,6 +200,7 @@
           "properties": {
             "Label": "DOUT",
             "Direction": "WEST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -193,6 +211,7 @@
           "properties": {
             "Label": "DOUT",
             "Direction": "WEST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -203,18 +222,7 @@
           "properties": {
             "Label": "INTA",
             "Direction": "WEST",
-            "Bitsize": "1"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.gates.NotGatePeer",
-          "x": 74,
-          "y": 51,
-          "properties": {
-            "Label location": "NORTH",
-            "Negate 0": "No",
-            "Label": "",
-            "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -228,6 +236,45 @@
             "Is input?": "Yes",
             "Direction": "EAST",
             "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
+          "x": 55,
+          "y": 16,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Value": "1",
+            "Direction": "NORTH",
+            "Bitsize": "1",
+            "Base": "BINARY"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
+          "x": 7,
+          "y": 4,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Value": "0",
+            "Direction": "EAST",
+            "Bitsize": "32",
+            "Base": "BINARY"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
+          "x": 7,
+          "y": 11,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Value": "1",
+            "Direction": "EAST",
+            "Bitsize": "32",
+            "Base": "BINARY"
           }
         },
         {
@@ -274,13 +321,14 @@
         {
           "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
           "x": 7,
-          "y": 34,
+          "y": 25,
           "properties": {
             "Label location": "NORTH",
-            "Label": "DEVICE ID",
-            "Value": "0",
+            "Label": "INTERRUPT TIME",
+            "Value": "2000",
             "Direction": "EAST",
-            "Bitsize": "32"
+            "Bitsize": "32",
+            "Base": "BINARY"
           }
         },
         {
@@ -384,6 +432,7 @@
           "properties": {
             "Label": "SIGNAL",
             "Direction": "EAST",
+            "Width": "5",
             "Bitsize": "1"
           }
         },
@@ -394,6 +443,7 @@
           "properties": {
             "Label": "SIGNAL",
             "Direction": "EAST",
+            "Width": "5",
             "Bitsize": "1"
           }
         },
@@ -404,6 +454,7 @@
           "properties": {
             "Label": "SIGNAL",
             "Direction": "EAST",
+            "Width": "5",
             "Bitsize": "1"
           }
         },
@@ -414,43 +465,8 @@
           "properties": {
             "Label": "SIGNAL",
             "Direction": "WEST",
+            "Width": "5",
             "Bitsize": "1"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
-          "x": 55,
-          "y": 16,
-          "properties": {
-            "Label location": "NORTH",
-            "Label": "",
-            "Value": "1",
-            "Direction": "NORTH",
-            "Bitsize": "1"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
-          "x": 7,
-          "y": 4,
-          "properties": {
-            "Label location": "NORTH",
-            "Label": "",
-            "Value": "0",
-            "Direction": "EAST",
-            "Bitsize": "32"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
-          "x": 7,
-          "y": 11,
-          "properties": {
-            "Label location": "NORTH",
-            "Label": "",
-            "Value": "1",
-            "Direction": "EAST",
-            "Bitsize": "32"
           }
         },
         {
@@ -469,13 +485,14 @@
         {
           "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
           "x": 7,
-          "y": 25,
+          "y": 34,
           "properties": {
             "Label location": "NORTH",
-            "Label": "INTERRUPT TIME",
-            "Value": "2000",
+            "Label": "DEVICE ID",
+            "Value": "0",
             "Direction": "EAST",
-            "Bitsize": "32"
+            "Bitsize": "32",
+            "Base": "BINARY"
           }
         },
         {
@@ -520,6 +537,17 @@
             "Label location": "NORTH",
             "Label": "",
             "Bitsize": "32"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.gates.NotGatePeer",
+          "x": 74,
+          "y": 51,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Direction": "EAST",
+            "Bitsize": "1"
           }
         }
       ],
@@ -842,6 +870,7 @@
           "properties": {
             "Label": "ID",
             "Direction": "NORTH",
+            "Width": "2",
             "Bitsize": "32"
           }
         },
@@ -852,6 +881,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "NORTH",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -862,6 +892,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "NORTH",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -872,6 +903,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "NORTH",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -882,6 +914,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "NORTH",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -892,6 +925,7 @@
           "properties": {
             "Label": "RESET",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -902,6 +936,7 @@
           "properties": {
             "Label": "RESET",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -912,6 +947,7 @@
           "properties": {
             "Label": "RESET",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -922,6 +958,7 @@
           "properties": {
             "Label": "ID",
             "Direction": "EAST",
+            "Width": "2",
             "Bitsize": "32"
           }
         },
@@ -932,6 +969,7 @@
           "properties": {
             "Label": "ONE",
             "Direction": "EAST",
+            "Width": "3",
             "Bitsize": "32"
           }
         },
@@ -942,6 +980,7 @@
           "properties": {
             "Label": "ID",
             "Direction": "WEST",
+            "Width": "2",
             "Bitsize": "32"
           }
         },
@@ -952,6 +991,7 @@
           "properties": {
             "Label": "CLK",
             "Direction": "WEST",
+            "Width": "3",
             "Bitsize": "1"
           }
         },
@@ -962,6 +1002,7 @@
           "properties": {
             "Label": "EQ",
             "Direction": "WEST",
+            "Width": "2",
             "Bitsize": "1"
           }
         },
@@ -972,6 +1013,7 @@
           "properties": {
             "Label": "ONE",
             "Direction": "WEST",
+            "Width": "3",
             "Bitsize": "32"
           }
         },
@@ -982,6 +1024,7 @@
           "properties": {
             "Label": "EQ",
             "Direction": "WEST",
+            "Width": "2",
             "Bitsize": "1"
           }
         },
@@ -992,6 +1035,7 @@
           "properties": {
             "Label": "ZERO",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "32"
           }
         },
@@ -1002,6 +1046,7 @@
           "properties": {
             "Label": "TIME",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "32"
           }
         },
@@ -1012,6 +1057,7 @@
           "properties": {
             "Label": "ZERO",
             "Direction": "WEST",
+            "Width": "4",
             "Bitsize": "32"
           }
         },
@@ -1022,6 +1068,7 @@
           "properties": {
             "Label": "INTA",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -1032,6 +1079,7 @@
           "properties": {
             "Label": "INTA",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -1042,6 +1090,7 @@
           "properties": {
             "Label": "INTA",
             "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -1052,6 +1101,7 @@
           "properties": {
             "Label": "TIME",
             "Direction": "WEST",
+            "Width": "4",
             "Bitsize": "32"
           }
         },
@@ -1062,6 +1112,7 @@
           "properties": {
             "Label": "DOUT",
             "Direction": "WEST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -1072,6 +1123,7 @@
           "properties": {
             "Label": "DOUT",
             "Direction": "WEST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -1082,18 +1134,7 @@
           "properties": {
             "Label": "INTA",
             "Direction": "WEST",
-            "Bitsize": "1"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.gates.NotGatePeer",
-          "x": 74,
-          "y": 51,
-          "properties": {
-            "Label location": "NORTH",
-            "Negate 0": "No",
-            "Label": "",
-            "Direction": "EAST",
+            "Width": "4",
             "Bitsize": "1"
           }
         },
@@ -1107,6 +1148,71 @@
             "Is input?": "Yes",
             "Direction": "EAST",
             "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
+          "x": 55,
+          "y": 16,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Value": "1",
+            "Direction": "NORTH",
+            "Bitsize": "1",
+            "Base": "BINARY"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
+          "x": 7,
+          "y": 4,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Value": "0",
+            "Direction": "EAST",
+            "Bitsize": "32",
+            "Base": "BINARY"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
+          "x": 7,
+          "y": 11,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Value": "1",
+            "Direction": "EAST",
+            "Bitsize": "32",
+            "Base": "BINARY"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
+          "x": 24,
+          "y": 66,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Value": "1",
+            "Direction": "EAST",
+            "Bitsize": "4",
+            "Base": "BINARY"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
+          "x": 46,
+          "y": 74,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Value": "1",
+            "Direction": "EAST",
+            "Bitsize": "4",
+            "Base": "BINARY"
           }
         },
         {
@@ -1163,13 +1269,14 @@
         {
           "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
           "x": 7,
-          "y": 34,
+          "y": 25,
           "properties": {
             "Label location": "NORTH",
-            "Label": "DEVICE ID",
-            "Value": "1",
+            "Label": "INTERRUPT TIME",
+            "Value": "1000",
             "Direction": "EAST",
-            "Bitsize": "32"
+            "Bitsize": "32",
+            "Base": "BINARY"
           }
         },
         {
@@ -1311,6 +1418,7 @@
           "properties": {
             "Label": "OUTPUT",
             "Direction": "NORTH",
+            "Width": "5",
             "Bitsize": "32"
           }
         },
@@ -1321,6 +1429,7 @@
           "properties": {
             "Label": "OUTPUT",
             "Direction": "WEST",
+            "Width": "5",
             "Bitsize": "32"
           }
         },
@@ -1331,6 +1440,7 @@
           "properties": {
             "Label": "SIGNAL",
             "Direction": "EAST",
+            "Width": "5",
             "Bitsize": "1"
           }
         },
@@ -1341,6 +1451,7 @@
           "properties": {
             "Label": "SIGNAL",
             "Direction": "EAST",
+            "Width": "5",
             "Bitsize": "1"
           }
         },
@@ -1351,6 +1462,7 @@
           "properties": {
             "Label": "SIGNAL",
             "Direction": "EAST",
+            "Width": "5",
             "Bitsize": "1"
           }
         },
@@ -1361,67 +1473,8 @@
           "properties": {
             "Label": "SIGNAL",
             "Direction": "WEST",
+            "Width": "5",
             "Bitsize": "1"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
-          "x": 55,
-          "y": 16,
-          "properties": {
-            "Label location": "NORTH",
-            "Label": "",
-            "Value": "1",
-            "Direction": "NORTH",
-            "Bitsize": "1"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
-          "x": 7,
-          "y": 4,
-          "properties": {
-            "Label location": "NORTH",
-            "Label": "",
-            "Value": "0",
-            "Direction": "EAST",
-            "Bitsize": "32"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
-          "x": 7,
-          "y": 11,
-          "properties": {
-            "Label location": "NORTH",
-            "Label": "",
-            "Value": "1",
-            "Direction": "EAST",
-            "Bitsize": "32"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
-          "x": 24,
-          "y": 66,
-          "properties": {
-            "Label location": "NORTH",
-            "Label": "",
-            "Value": "1",
-            "Direction": "EAST",
-            "Bitsize": "4"
-          }
-        },
-        {
-          "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
-          "x": 46,
-          "y": 74,
-          "properties": {
-            "Label location": "NORTH",
-            "Label": "",
-            "Value": "1",
-            "Direction": "EAST",
-            "Bitsize": "4"
           }
         },
         {
@@ -1440,13 +1493,14 @@
         {
           "name": "com.ra4king.circuitsim.gui.peers.wiring.ConstantPeer",
           "x": 7,
-          "y": 25,
+          "y": 34,
           "properties": {
             "Label location": "NORTH",
-            "Label": "INTERRUPT TIME",
-            "Value": "1000",
+            "Label": "DEVICE ID",
+            "Value": "1",
             "Direction": "EAST",
-            "Bitsize": "32"
+            "Bitsize": "32",
+            "Base": "BINARY"
           }
         },
         {
@@ -1522,6 +1576,17 @@
             "Label location": "NORTH",
             "Label": "",
             "Bitsize": "32"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.gates.NotGatePeer",
+          "x": 74,
+          "y": 51,
+          "properties": {
+            "Label location": "NORTH",
+            "Label": "",
+            "Direction": "EAST",
+            "Bitsize": "1"
           }
         }
       ],
