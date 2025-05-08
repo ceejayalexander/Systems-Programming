@@ -1,0 +1,1 @@
+diff my_output.log outputs/astar-random.log

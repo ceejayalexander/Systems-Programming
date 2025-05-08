@@ -1,0 +1,6 @@
+shell make clean
+shell make
+directory
+file ./vm-sim
+run -i traces/astar.trace -r fifo > my_astar_fifo.log
+shell diff my_astar_fifo.log outputs/astar_fifo.log
