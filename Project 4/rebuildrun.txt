@@ -1,0 +1,5 @@
+shell make clean
+shell make debug
+directory
+file ./os-sim
+r 1 -r 2
