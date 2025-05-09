@@ -1,0 +1,64 @@
+CS 2200 Project 4
+
+Name: Cordell A. Palmer
+GTID: 903381043
+GT_Email: cpalmer41@gatech.edu
+Section: N/A
+
+==============================================
+
+___________________________
+Problem-1 (FCFS Scheduler)
+---------------------------
+Total Execution Time:
+- 1 CPU: 68.9s
+- 2 CPUs: 43.2s
+- 4 CPUs: 37.1s 
+- 8 CPUs: 37.2s
+- 16 CPUs: 37.1s
+
+One can clearly observe that the relationship between the # of CPUs (independent variable) and total execution time (dependent variable) is
+non-linear, since this phenomenon mimics the principals of Amdahl's law, wherein there's a limit to the amount of performance gain one can squeeze
+out of a procedure purely by increasing parallelability. Although an increase in performance was observed, it clearly became non-beneficial to add
+more than 4 CPUs to the program, since most of them remained idle (indicating underutilization) since the processes are single-threaded and instructions
+execute non-concurrently.
+
+________________________
+Problem-2 (Round-Robin)
+------------------------
+Timeslice: 800 ms
+    - Total context switches: 131
+    - Total execution time: 68s
+    - READY state time: 320s
+Timeslice: 600 ms
+    - Total context switches: 159
+    - Total execution time: 68s
+    - READY state time: 309s
+Timeslice: 400 ms
+    - Total context switches: 202
+    - Total execution time: 68s
+    - READY state time: 290.8s
+Timeslice: 200 ms
+    - Total context switches: 362
+    - Total execution time: 67.9s
+    - READY state time: 284.5s
+
+As the timeslice length decreases, the total time a process spends in the ready queue decreases as a direct result of processes overall executing
+more readily in smaller pieces. Thus, processes will spend more time executing and less time waiting. 
+
+However, this doesn't make it viable for a modern OS to use smaller time quantums where the shortest possible time slice is utilized, due to 
+increased overhead from frequent context switching. Such a system is also more prone to starvation, since more processes stockpiling in memory 
+could increasingly delay the execution of a longer process.
+
+________________________________
+Problem-3 (Preemptive Priority)
+--------------------------------
+Starvation is mitigated in a priority-based scheduler simply by factoring in the time a process has spent waiting in the ready queue to be executed,
+which allows a lower priority process to be given time to use the processor in spite of the presence of higher priority tasks.
+
+___________________________________________
+Problem-4 (The Priority Inversion Problem)
+-------------------------------------------
+1. Implement a way to detect when a higher priority process is waiting on the execution of a lower priority process.
+2. If a higher priority process is blocked, the OS would temporarily raise the priority of the dependent process.
+3. Once it finishes, revert priority back to what it once was.
