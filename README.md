@@ -1,6 +1,9 @@
 # Systems-Programming
 This repository showcases my journey through the CS 2200 curriculum, focusing on processor design and systems programming. It includes five projects, each documented with detailed explanations of the design process, challenges faced, and insights gained.
 
+[DISCLAIMER]
+All projects past the second were completed much earlier than when committed to this repository. To be completely honest, I was far too engrossed with reading my textbook and writing code to find the time to upload my finished projects. 
+
 ## Project 1 - Implementing a 16-bit LC-2200 Datapath
 This was a fun, hands-on way of creating a processor mostly from scratch. While I obtained a general understanding of datapath design from a prerequisite course offered at my college (CS 2110), how the control unit facilitates the processor stepping through sequential, repeatable states remained a mystery to me until now. That was a responsiblity handed to this course, and seeing it all come together is truly fulfilling. 
 
@@ -15,3 +18,11 @@ This was a fun, hands-on way of creating a processor mostly from scratch. While 
 NOTE: For Project 1, I used Logisim Evo which is a repurposed version of an older tool, but for Project 2, I transitioned to Circuit Sim due to its compatibility with the Python-based assembler and the shift to a 32-bit architecture.
 
 Overall, this project was quite straightforward and didn't involve much difficulty. The key challenge was understanding how interrupt lines utilize pull-up and pull-down resistors to maintain reliable HIGH and LOW values when idle, and how to simulate this properly in Circuit Sim. Apart from that, the concepts involved in interrupt handling such as the interrupt register, daisy-chaining and interrupt acknowledgement signals being passed to peripheral devices, and save/restoring processor state during interrupt handling all led me to appreciate I/O mechanisms more deeply and thoughtfully.
+
+## Project 3 - Implementing a Memory Management Unit and Page Replacement Algorithms
+
+This project was quite a handful, even more difficult than multithreading. I was forced to thoroughly examine line-by-line using GDB every single bug I encountered on multiple iterations (some of which still remain because I simply lost patience). For instance, one of the first bugs I encountered that took me a fair while to diagnose was the fact that I didn't realize that by returning a pointer to struct and performing pointer arithmetic prior that I was mistakenly performing pointer arithmetic with a pointer to struct, not a pointer to uint16_t for address_splitting.c, which involved calculating PTE and physical memory offsets. This of course led to segfaults due to the fact that the pointer's value was consistently being offset by large, struct-sized chunks of memory, leading me to ultimately conclude that performing a cast after pointer arithmetic to return a struct-sized piece of memory is ultimately necessary. Additionally, it became increasingly clear that I should deeply understand how the code provided the TA's 'simulator-src' was interacting with and calling my code 'student-src', a lesson which I carry over into Project 4. For instance, it wasn't explicitly made clear that PIDs are handled by the TA's code for instance, which caused another headache for some time. But the most frustrating thing was constantly re-writing 'context_switch()' defined in proc.c, because I assumed that it would be necessary to handle a process's entire start-stop behavior. Turns out, it required just two lines of code: 'proc->state = PROC_RUNNING;' and 'PTBR = proc->saved_ptbr;' which sets the new process passed into the function's PCB state to PROC_RUNNING and the global PTBR to that of the new process. Regarding the page replacement algorithms, most were able to be properly implemented, although I ran into issues running some traces. Executing the example command 'diff my_output.log outputs/astar-random.log' would for instance reveal a 5 line difference when the total length of the trace files exceeded 500k lines. Overall, this experience has revealed to me that MMU's are quite prone to corruption and require robust C programming and deep low-level understanding of page-based memory systems. I can only imagine how complicated it becomes in a modern OS.
+
+## Project 4 - Process Scheduling
+
+
