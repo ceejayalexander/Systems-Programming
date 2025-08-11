@@ -25,4 +25,5 @@ This project was quite a handful, even more difficult than multithreading. I was
 
 ## Project 4 - Process Scheduling
 
+Not too much to say about this project. We were tasked with implementing the ready queue linked list and all scheduling behavior surrounding it. Additionally, our test cases had to handle the provided variety of scheduling algorithms via command line arguments, so code was written to accomplish that as well. Most time was actually spent studying the behavior of the provided code on the student's behalf in order to precisely understand how the CPUs are being simulated, further refine my threading knowledge and skillset, and diagnose issues that arose when I was implementing the methods in the student.c file. Overall, this was one of the easier projects and seemed quite straightforward, in my experience.
 
